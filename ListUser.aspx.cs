@@ -22,7 +22,7 @@ namespace InfologUserManagement
         SqlCommand cmd = new SqlCommand();
 
         ReportDocument crystalReport = new ReportDocument();
-        static DataTable dt;
+         DataTable dt {set;get;}
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -50,10 +50,10 @@ namespace InfologUserManagement
             cmd.Parameters["@RecordCount"].Direction = ParameterDirection.Output;
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
-            dt = new DataTable();
+            DataTable dt = new DataTable();
 
             da.Fill(dt);
-           
+           this.dt=dt;
             
             GridView1.DataSource = dt;
             GridView1.DataBind();
